@@ -16,7 +16,7 @@ from .utils import get_confirmation
 class Bot(commands.Bot):
     def __init__(self, command_prefix="~") -> None:
         super().__init__(command_prefix=command_prefix, intents=discord.Intents.all())
-        self.message_id = None  # The ID of the message to watch for reactions
+        self.message_id = 1292712195700031655  # The ID of the message to watch for reactions
         self.role_to_add = None  # The role to assign when reacted to
         self.add_commands()
     
@@ -54,10 +54,10 @@ class Bot(commands.Bot):
         #     self.tree.add_command(self.team, guild=discord.Object(ctx.guild.id))
         #     print("Team creation activated")
 
-        async def set_message(ctx, message_id: int, role_name: str):
+        @self.command(name="set_message")
+        async def set_message(ctx):
             # Store the message ID and role
-            self.message_id = message_id
-            self.role_to_add = discord.utils.get(ctx.guild.roles, name=role_name)
+            self.role_to_add = discord.utils.get(ctx.guild.roles, name="participant")
             if self.role_to_add:
                 await ctx.send(f"Reaction role set! Role `{self.role_to_add.name}` will be added when users react to the message ID `{message_id}`.")
             else:
