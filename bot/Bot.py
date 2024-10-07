@@ -11,7 +11,7 @@ from discord import app_commands
 import logging
 from discord.utils import get as dget
 import os
-import utils
+from utils import get_confirmation
 
 class Bot(commands.Bot):
     def __init__(self, command_prefix="~") -> None:
@@ -142,7 +142,7 @@ class Bot(commands.Bot):
 
         await interaction.response.send_message(msg)
         confirm_msg = await interaction.original_response()
-        confirmed = await utils.get_confirmation(interaction.client, interaction.user, confirm_msg)
+        confirmed = await get_confirmation(interaction.client, interaction.user, confirm_msg)
 
         if confirmed == None: # timed out
             return
