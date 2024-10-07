@@ -11,7 +11,7 @@ from discord import app_commands
 import logging
 from discord.utils import get as dget
 import os
-from utils import get_confirmation
+from .utils import get_confirmation
 
 class Bot(commands.Bot):
     def __init__(self, command_prefix="~") -> None:
