@@ -16,6 +16,8 @@ from .utils import get_confirmation
 class Bot(commands.Bot):
     def __init__(self, command_prefix="~") -> None:
         super().__init__(command_prefix=command_prefix, intents=discord.Intents.all())
+        self.message_id = None  # The ID of the message to watch for reactions
+        self.role_to_add = None  # The role to assign when reacted to
         self.add_commands()
     
     async def on_ready(self):
@@ -27,6 +29,21 @@ class Bot(commands.Bot):
         except Exception as e:
             print(e)
     
+    async def on_raw_reaction_add(self, payload: discord.RawReactionActionEvent):
+        # Check if the reaction is on the specified message
+        if payload.message_id == self.message_id:
+            guild = self.get_guild(payload.guild_id)
+            member = guild.get_member(payload.user_id)
+
+            # Check if the emoji is what you expect (e.g., ✅)
+            if str(payload.emoji) == "1️⃣":
+                role = self.role_to_add
+                if role:
+                    await member.add_roles(role)
+                    print(f"Added role {role.name} to {member.name}")
+                    channel = guild.get_channel(payload.channel_id)
+                    await channel.send(f"Role `{role.name}` added to {member.mention}.")
+    
     def add_commands(self):
         @self.command(name="ping", description="lol")
         async def ping(ctx):
@@ -36,6 +53,15 @@ class Bot(commands.Bot):
         # async def enableTeam(ctx):
         #     self.tree.add_command(self.team, guild=discord.Object(ctx.guild.id))
         #     print("Team creation activated")
+
+        async def set_message(ctx, message_id: int, role_name: str):
+            # Store the message ID and role
+            self.message_id = message_id
+            self.role_to_add = discord.utils.get(ctx.guild.roles, name=role_name)
+            if self.role_to_add:
+                await ctx.send(f"Reaction role set! Role `{self.role_to_add.name}` will be added when users react to the message ID `{message_id}`.")
+            else:
+                await ctx.send(f"Role `{role_name}` not found.")
     
         @self.tree.command(name="team")
         # @self.tree.describe(team_name="The name of your team.")
