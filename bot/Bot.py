@@ -28,7 +28,7 @@ class Bot(commands.Bot):
         
         @self.command(name="enableTeam")
         async def enableTeam(ctx):
-            self.tree.add_command(self.team, guild=ctx.guild.id)
+            self.tree.add_command(self.team, guild=discord.Object(ctx.guild.id))
             logging("Team creation activated")
     
     @app_commands.command()
