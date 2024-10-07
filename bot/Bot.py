@@ -14,10 +14,10 @@ import os
 import utils
 
 class Bot(commands.Bot):
-    def __init__(self, command_prefix="!") -> None:
+    def __init__(self, command_prefix="~") -> None:
         super().__init__(command_prefix=command_prefix, intents=discord.Intents.all())
         self.add_commands()
-        
+    
     async def on_ready(self):
         print(f'{self.user} has connected to Discord!')
     
@@ -25,6 +25,12 @@ class Bot(commands.Bot):
         @self.command(name="ping", description="lol")
         async def ping(ctx):
             await ctx.send("pong")
+        
+        @self.command(name="enableTeam")
+        async def enableTeam(ctx):
+            if(ctx.author.roles):
+                print(ctx.author.roles)
+            # self.tree.add_command(self.team, guild=ctx.guild.id)
     
     @app_commands.command()
     @app_commands.describe(team_name="The name of your team.")
