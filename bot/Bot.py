@@ -59,9 +59,9 @@ class Bot(commands.Bot):
             # Store the message ID and role
             self.role_to_add = discord.utils.get(ctx.guild.roles, name="participant")
             if self.role_to_add:
-                await ctx.send(f"Reaction role set! Role `{self.role_to_add.name}` will be added when users react to the message ID `{message_id}`.")
+                await ctx.send(f"Reaction role set! Role `{self.role_to_add.name}` will be added when users react to the message ID `{self.message_id}`.")
             else:
-                await ctx.send(f"Role `{role_name}` not found.")
+                await ctx.send(f"Role `participant` not found.")
     
         @self.tree.command(name="team")
         # @self.tree.describe(team_name="The name of your team.")
