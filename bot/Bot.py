@@ -28,9 +28,7 @@ class Bot(commands.Bot):
         
         @self.command(name="enableTeam")
         async def enableTeam(ctx):
-            if(ctx.author.roles):
-                print(ctx.author.roles)
-            # self.tree.add_command(self.team, guild=ctx.guild.id)
+            self.tree.add_command(self.team, guild=ctx.guild.id)
     
     @app_commands.command()
     @app_commands.describe(team_name="The name of your team.")
@@ -40,6 +38,7 @@ class Bot(commands.Bot):
     @app_commands.describe(member4="A team member.")
     @app_commands.describe(member5="A team member.")
     async def team(
+        self, 
         interaction: discord.Interaction, 
         team_name: str,
         member1: discord.Member,
