@@ -48,7 +48,7 @@ class Bot(commands.Bot):
             member = guild.get_member(payload.user_id)
 
             # Check if the emoji is what you expect (e.g., ✅)
-            if str(payload.emoji) == "1️⃣":
+            if str(payload.emoji) == "1️✅":
                 role = self.role_to_add
                 if role:
                     await member.add_roles(role)
