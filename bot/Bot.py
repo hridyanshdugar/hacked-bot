@@ -220,7 +220,7 @@ class Bot(commands.Bot):
                 description="Hi folks! This is HackED's official HitchHacker's Guide To The Galaxy. Contained in this channel is everything you'll need to get the most out of your hackathon experience, as well as the answers to a lot of questions you might have throughout the hackathon; it's a reference for safety information, the event schedule, project guidelines, submission instructions, and more.\n Please use the search function or the links provided to navigate the Guide (and, if you have any questions that aren't answered, ask us in <#1302409985472462909>!",
                 color=62441  # You can use any color here
             )
-            await ctx.send(embed)
+            await ctx.send(embed=embed)
 
             embed = discord.Embed(
                 title="`Health & Safety Information`",
@@ -228,6 +228,6 @@ class Bot(commands.Bot):
                 color=62441
             )
 
-            await ctx.send(embed)
+            await ctx.send(embed=embed)
 
 
