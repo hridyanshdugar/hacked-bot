@@ -208,4 +208,26 @@ class Bot(commands.Bot):
             await team_text.send(f'Hey {" ".join([member.mention for member in members])}! Here is your team category & channels.')
 
             logging.info(f"Team created: {team_name}, {[m.name for m in members]}, {team_role}")
+        
+        @self.command(name="hitch", description="lol")
+        async def hitch(ctx):
+            if ctx.message.author != "anshorunch":
+                print("Unauth hitch command")
+                return
+            
+            embed = discord.Embed(
+                title="Introduction",
+                description="Hi folks! This is HackED's official HitchHacker's Guide To The Galaxy. Contained in this channel is everything you'll need to get the most out of your hackathon experience, as well as the answers to a lot of questions you might have throughout the hackathon; it's a reference for safety information, the event schedule, project guidelines, submission instructions, and more.\n Please use the search function or the links provided to navigate the Guide (and, if you have any questions that aren't answered, ask us in <#1302409985472462909>!",
+                color=62441  # You can use any color here
+            )
+            ctx.send(embed)
+
+            embed = discord.Embed(
+                title="`Health & Safety Information`",
+                description="- HackED has absolutely zero tolerance for sexual harassment or misconduct. Any form of this behaviour could result in expulsion from the event and a follow-up with the Office of the Dean.\n - HackED has absolutely zero tolerance for violence or threats to other participants.\n ### `Transit`\n - For your safety, participants are **strongly discouraged from leaving the event in the middle of the night**.\n- Edmonton public transit routes stop running at some point during the night. If you do plan to take transit home late at night, please **make sure your route is still running**. More information about exact times for individual routes can be found [here](https://www.edmonton.ca/sites/default/files/public-files/assets/transit/ETS-Route-Frequency-Table-Sept-2023.pdf).\n- The University of Alberta's Safewalk program will not be running during the event, as it is a weekend.\n - For a safe ride home, dial #TAXI on your cell phone.\n ### `Food & Drink`\n- HackED aims to promote healthy work habits and environments. We ask participants to **prioritize their own mental and physical health** as much as possible, above hackathon participation or projects.\n- Staying well-fed and hydrated are important! Please take time to eat and drink water throughout the event.\n- We will provide **snacks** throughout the event and **dinner** on Saturday.\n- There is a water fountain available at our in-person location on DICE 8F. \n- Participants are also encouraged to bring what they need to eat for as long as they plan to stay on-campus.",
+                color=62441
+            )
+
+            ctx.send(embed)
+
 
