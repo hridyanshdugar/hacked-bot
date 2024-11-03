@@ -255,3 +255,19 @@ class Bot(commands.Bot):
             await ctx.send(embed=embed)
 
 
+            embed = discord.Embed(
+                title="`Team Creation Details`",
+                description="To create a team, run the /team command in <#1301806793839607839>. \n- Teams may have anywhere from 1 to 5 people (inclusive), and may consist of any combination of in-person and virtual participants.\n- The team you create on Discord is our official record of your team's participants and is what we will use for prize distribution.\n- If you want to add/remove someone to/from your team, please ping <@1264055395454816256>.",
+                color=62441
+            )
+
+            await ctx.send(embed=embed)
+
+            embed = discord.Embed(
+                title="`Judging Signup Details`",
+                description="### Signup \n <@1292602512007761992> will ping you in your team's channel, please react to that message to signup for judging \n\n ### Github and Devpost Links \n In your team's channel, please tag <@1292602512007761992> and send the link to your github repo and devpost before the judging signup closes",
+                color=62441
+            )
+
+            await ctx.send(embed=embed)
+
