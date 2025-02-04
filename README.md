@@ -10,3 +10,6 @@ TEAM_CREATION_ENABLED=1
 1. Create the roles ['organizer', 'mentor', 'volunteer', 'sponsor', 'judge', 'participant']
 2. Create a welcome channel and add the message to react, copy the message id and update in Bot.py
 3. Create all required channels, configure the hitch embeds
+
+# Server template
+https://discord.new/Tr5cA8Zr9aXR
