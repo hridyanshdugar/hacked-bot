@@ -16,7 +16,7 @@ from .utils import get_confirmation
 class Bot(commands.Bot):
     def __init__(self, command_prefix="~") -> None:
         super().__init__(command_prefix=command_prefix, intents=discord.Intents.all())
-        self.message_id = 1301300878510395393  # The ID of the message to watch for reactions
+        self.message_id = 1336237048696275007  # The ID of the message to watch for reactions
         self.role_to_add = None  # The role to assign when reacted to
         self.add_commands()
     
