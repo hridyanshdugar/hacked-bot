@@ -234,7 +234,7 @@ class Bot(commands.Bot):
 
             embed = discord.Embed(
                 title="`Leaving & Reentering The Building`",
-                description="- If you leave and reenter the building, **you must sign out and back in at the front desk.**\n- Elevators in this building require a key-pass after hours. If you get stuck downstairs and aren't able to use the elevators, send a message in <#1338900300639244398> and a volunteer will let you in.\n- It is possible to get locked in the stairwell near the water fountain. If that happens, send a message in <#1338900300639244398> and a volunteer will let you in.",
+                description="- If you leave and reenter the building, **you must sign out and back in at the front desk.**\n- Elevators in this building require a key-pass after hours. If you get stuck downstairs and aren't able to use the elevators, send a message in <#1339085635310452746> and a volunteer will let you in.\n- It is possible to get locked in the stairwell near the water fountain. If that happens, send a message in <#1339085635310452746> and a volunteer will let you in.",
                 color=62441
             )
 
