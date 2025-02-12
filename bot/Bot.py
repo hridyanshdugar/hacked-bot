@@ -56,6 +56,7 @@ class Bot(commands.Bot):
     
     def add_commands(self):
         @self.command(name="ping", description="lol")
+        @commands.has_role("mod")
         async def ping(ctx):
             await ctx.send("pong")
         
@@ -210,6 +211,7 @@ class Bot(commands.Bot):
             logging.info(f"Team created: {team_name}, {[m.name for m in members]}, {team_role}")
         
         @self.command(name="hitch", description="lol")
+        @commands.has_role("mod")
         async def hitch(ctx):
             if ctx.message.author in ["anshorunch", "prakashpprasad"]:
                 print("Unauth hitch command")
