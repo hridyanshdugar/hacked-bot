@@ -272,4 +272,10 @@ class Bot(commands.Bot):
             )
 
             await ctx.send(embed=embed)
+        
+        @self.command(name="clear", description="lol")
+        @commands.has_role("mod")
+        async def clear(ctx):
+            """Clears all messages in the channel."""
+            await ctx.channel.purge()
 
