@@ -295,11 +295,6 @@ class Bot(commands.Bot):
         @app_commands.describe(github="The link to the github")
         async def judging( 
             interaction: discord.Interaction,
-            member1: discord.Member,
-            member2: Optional[discord.Member],
-            member3: Optional[discord.Member],
-            member4: Optional[discord.Member],
-            member5: Optional[discord.Member],
             devpost: str,
             github: str
         ):
