@@ -275,3 +275,21 @@ class Bot(commands.Bot):
             """Clears all messages in the channel."""
             await ctx.channel.purge()
 
+        @self.tree.command(name="judging")
+        # @self.tree.describe(team_name="The name of your team.")
+        @app_commands.describe(member1="A team member.")
+        @app_commands.describe(member2="A team member.")
+        @app_commands.describe(member3="A team member.")
+        @app_commands.describe(member4="A team member.")
+        @app_commands.describe(member5="A team member.")
+        async def judging( 
+            interaction: discord.Interaction, 
+            team_name: str,
+            member1: discord.Member,
+            member2: Optional[discord.Member],
+            member3: Optional[discord.Member],
+            member4: Optional[discord.Member],
+            member5: Optional[discord.Member]
+        ):
+            pass
+
