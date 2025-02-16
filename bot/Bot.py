@@ -372,10 +372,14 @@ class Bot(commands.Bot):
             # Build a response message
             lines = []
             for team_name, devpost, github in teams:
+                role = discord.utils.get(ctx.guild.roles, name=team_name)
+                members_with_role = role.members
+                member_lines = [member.mention for member in members_with_role]
                 lines.append(
                     f"**Team Name:** {team_name}\n"
                     f"• Devpost: {devpost}\n"
                     f"• GitHub:  {github}\n"
+                    f"• Members: {member_lines}"
                     "----------------------------------------\n"
                 )
 
