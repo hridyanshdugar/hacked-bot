@@ -366,7 +366,7 @@ class Bot(commands.Bot):
 
             # If there are no teams, just let the user know
             if not teams:
-                await ctx.send("No teams have been registered yet!")
+                await ctx.send("No teams have registered yet!")
                 return
 
             # Build a response message
