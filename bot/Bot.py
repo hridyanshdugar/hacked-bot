@@ -362,7 +362,7 @@ class Bot(commands.Bot):
             """
 
             # Query the database
-            self.cursor.execute("SELECT team_name, devpost, github FROM submissions")
+            self.cursor.execute("SELECT team_name, devpost, github FROM submissions ORDER BY RANDOM()")
             teams = self.cursor.fetchall()
 
             # If there are no teams, just let the user know
