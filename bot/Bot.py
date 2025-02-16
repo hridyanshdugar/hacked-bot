@@ -297,5 +297,6 @@ class Bot(commands.Bot):
             if interaction.channel.category.name.lower() == "general":
                 await interaction.response.send_message(f"❌ You cannot run this command here.")
                 return
-        return
+            await interaction.response.send_message(f":ok:")
+            return
 
