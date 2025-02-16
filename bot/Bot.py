@@ -213,10 +213,6 @@ class Bot(commands.Bot):
         @self.command(name="hitch", description="lol")
         @commands.has_role("mod")
         async def hitch(ctx):
-            if ctx.message.author in ["anshorunch", "prakashpprasad"]:
-                print("Unauth hitch command")
-                return
-            
             embed = discord.Embed(
                 title="Introduction",
                 description="Hi folks! This is HackED's official HitchHacker's Guide To The Galaxy. Contained in this channel is everything you'll need to get the most out of your hackathon experience, as well as the answers to a lot of questions you might have throughout the hackathon; it's a reference for safety information, the event schedule, project guidelines, submission instructions, and more.\n Please use the search function or the links provided to navigate the Guide (and, if you have any questions that aren't answered, ask us in <#1336202563548086301>!",
