@@ -292,11 +292,6 @@ class Bot(commands.Bot):
             await ctx.channel.purge()
 
         @self.tree.command(name="judging")
-        @app_commands.describe(member1="A team member.")
-        @app_commands.describe(member2="A team member.")
-        @app_commands.describe(member3="A team member.")
-        @app_commands.describe(member4="A team member.")
-        @app_commands.describe(member5="A team member.")
         @app_commands.describe(devpost="The link to the devpost")
         @app_commands.describe(github="The link to the github")
         async def judging( 
