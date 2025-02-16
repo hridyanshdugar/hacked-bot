@@ -59,6 +59,8 @@ class Bot(commands.Bot):
         )
         """)
         conn.commit()
+        print(f"Database has been setup")
+
     
     async def on_raw_reaction_add(self, payload: discord.RawReactionActionEvent):
         # Check if the reaction is on the specified message
