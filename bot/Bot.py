@@ -322,8 +322,7 @@ class Bot(commands.Bot):
             # await interaction.response.send_message(f"Please wait for the announcement before you run this command.")
 
             await interaction.response.send_message(
-                ":white_check_mark: Your submission has been recorded!",
-                ephemeral=True
+                ":white_check_mark: Your submission has been recorded!"
             )
 
             return
