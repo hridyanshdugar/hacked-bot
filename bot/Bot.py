@@ -351,3 +351,35 @@ class Bot(commands.Bot):
             )
 
             return
+        
+        @self.command(name="judging_list", description="Displays all registered teams.")
+        @commands.has_role("mod") 
+        async def judging_list(ctx):
+            """
+            Lists all teams that have been registered in the submissions table,
+            using 'team_name' instead of 'channel_name'.
+            """
+
+            # Query the database
+            self.cursor.execute("SELECT team_name, devpost, github FROM submissions")
+            teams = self.cursor.fetchall()
+
+            # If there are no teams, just let the user know
+            if not teams:
+                await ctx.send("No teams have been registered yet!")
+                return
+
+            # Build a response message
+            lines = []
+            for team_name, devpost, github in teams:
+                lines.append(
+                    f"**Team Name:** {team_name}\n"
+                    f"• Devpost: {devpost}\n"
+                    f"• GitHub:  {github}\n"
+                    "----------------------------------------\n"
+                )
+
+            response = "\n".join(lines)
+
+            # Send the response
+            await ctx.send(response)
