@@ -295,7 +295,7 @@ class Bot(commands.Bot):
         ):
             # check run in correct channel
             if interaction.channel.category.name.lower() == "general":
-                await interaction.response.send_message(f"❌ You cannot run this command here.")
+                await interaction.response.send_message(f"❌ You cannot run this command here. Please run it in your team channel.")
                 return
             await interaction.response.send_message(f":ok:")
             return
