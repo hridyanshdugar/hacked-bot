@@ -48,12 +48,7 @@ class Bot(commands.Bot):
         # Make `channel_name` the primary key
         cursor.execute("""
         CREATE TABLE IF NOT EXISTS submissions (
-            channel_name TEXT PRIMARY KEY,
-            member1_id INTEGER,
-            member2_id INTEGER,
-            member3_id INTEGER,
-            member4_id INTEGER,
-            member5_id INTEGER,
+            team_name TEXT PRIMARY KEY,
             devpost TEXT,
             github TEXT
         )
