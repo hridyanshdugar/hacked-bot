@@ -379,7 +379,7 @@ class Bot(commands.Bot):
                     f"**Team Name:** {team_name}\n"
                     f"• Devpost: {devpost}\n"
                     f"• GitHub:  {github}\n"
-                    f"• Members: {member_lines}"
+                    f"• Members: {member_lines}\n"
                     "----------------------------------------\n"
                 )
 
