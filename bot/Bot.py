@@ -290,7 +290,7 @@ class Bot(commands.Bot):
             """Clears all messages in the channel."""
             await ctx.channel.purge()
 
-        @self.tree.command(name="judging")
+        @self.tree.command(name="judging", description="Add your project's submission for HackED.")
         @app_commands.describe(devpost="The link to the devpost")
         @app_commands.describe(github="The link to the github")
         async def judging( 
@@ -327,3 +327,27 @@ class Bot(commands.Bot):
 
             return
 
+        @self.tree.command(name="withdraw_judging", description="Remove your project's submission from HackED.")
+        async def withdraw_judging( 
+            interaction: discord.Interaction
+        ):
+            # check run in correct channel
+            if interaction.channel.category.name.lower() == "general":
+                await interaction.response.send_message(f"❌ You cannot run this command here. Please run it in your team channel.")
+                return
+            
+            team_name = interaction.channel.name
+
+            self.cursor.execute(
+                "DELETE FROM submissions WHERE team_name = ?",
+                (team_name,)
+             )
+            self.conn.commit()
+
+            # await interaction.response.send_message(f"Please wait for the announcement before you run this command.")
+
+            await interaction.response.send_message(
+                ":white_check_mark: Your submission has been removed!"
+            )
+
+            return
