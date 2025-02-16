@@ -282,6 +282,8 @@ class Bot(commands.Bot):
         @app_commands.describe(member3="A team member.")
         @app_commands.describe(member4="A team member.")
         @app_commands.describe(member5="A team member.")
+        @app_commands.describe(devpost="The link to the devpost")
+        @app_commands.describe(github="The link to the github")
         async def judging( 
             interaction: discord.Interaction, 
             team_name: str,
@@ -289,7 +291,9 @@ class Bot(commands.Bot):
             member2: Optional[discord.Member],
             member3: Optional[discord.Member],
             member4: Optional[discord.Member],
-            member5: Optional[discord.Member]
+            member5: Optional[discord.Member],
+            devpost: str,
+            github: str
         ):
             pass
 
