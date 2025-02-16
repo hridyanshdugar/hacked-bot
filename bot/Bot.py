@@ -276,7 +276,6 @@ class Bot(commands.Bot):
             await ctx.channel.purge()
 
         @self.tree.command(name="judging")
-        # @self.tree.describe(team_name="The name of your team.")
         @app_commands.describe(member1="A team member.")
         @app_commands.describe(member2="A team member.")
         @app_commands.describe(member3="A team member.")
@@ -285,8 +284,7 @@ class Bot(commands.Bot):
         @app_commands.describe(devpost="The link to the devpost")
         @app_commands.describe(github="The link to the github")
         async def judging( 
-            interaction: discord.Interaction, 
-            team_name: str,
+            interaction: discord.Interaction,
             member1: discord.Member,
             member2: Optional[discord.Member],
             member3: Optional[discord.Member],
@@ -295,5 +293,8 @@ class Bot(commands.Bot):
             devpost: str,
             github: str
         ):
-            pass
+            # check run in correct channel
+            if interaction.channel.category.name.lower() == "general":
+                await interaction.response.send_message(f"❌ You cannot run this command here.")
+                return
 
