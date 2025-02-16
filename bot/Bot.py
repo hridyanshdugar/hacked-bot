@@ -12,6 +12,7 @@ import logging
 from discord.utils import get as dget
 import os
 from .utils import get_confirmation
+import sqlite3
 
 class Bot(commands.Bot):
     def __init__(self, command_prefix="~") -> None:
@@ -40,6 +41,24 @@ class Bot(commands.Bot):
             print(f"Reaction role set! Role `{self.role_to_add.name}` will be added when users react to message ID `{self.message_id}`.")
         else:
             print(f"Role `participant` not found. Please check the role name.")
+
+        conn = sqlite3.connect('judging.db')
+        cursor = conn.cursor()
+
+        # Make `channel_name` the primary key
+        cursor.execute("""
+        CREATE TABLE IF NOT EXISTS submissions (
+            channel_name TEXT PRIMARY KEY,
+            member1_id INTEGER,
+            member2_id INTEGER,
+            member3_id INTEGER,
+            member4_id INTEGER,
+            member5_id INTEGER,
+            devpost TEXT,
+            github TEXT
+        )
+        """)
+        conn.commit()
     
     async def on_raw_reaction_add(self, payload: discord.RawReactionActionEvent):
         # Check if the reaction is on the specified message
