@@ -17,6 +17,8 @@ import sqlite3
 class Bot(commands.Bot):
     def __init__(self, command_prefix="~") -> None:
         super().__init__(command_prefix=command_prefix, intents=discord.Intents.all())
+        self.conn = sqlite3.connect('judging.db')
+        self.cursor = self.conn.cursor()
         self.message_id = 1336237048696275007  # The ID of the message to watch for reactions
         self.role_to_add = None  # The role to assign when reacted to
         self.add_commands()
@@ -42,18 +44,15 @@ class Bot(commands.Bot):
         else:
             print(f"Role `participant` not found. Please check the role name.")
 
-        conn = sqlite3.connect('judging.db')
-        cursor = conn.cursor()
-
         # Make `channel_name` the primary key
-        cursor.execute("""
+        self.cursor.execute("""
         CREATE TABLE IF NOT EXISTS submissions (
             team_name TEXT PRIMARY KEY,
             devpost TEXT,
             github TEXT
         )
         """)
-        conn.commit()
+        self.conn.commit()
         print(f"Database has been setup")
 
     
@@ -308,6 +307,23 @@ class Bot(commands.Bot):
             if interaction.channel.category.name.lower() == "general":
                 await interaction.response.send_message(f"❌ You cannot run this command here. Please run it in your team channel.")
                 return
+            
+            team_name = interaction.channel.name
+
+            sql = """
+            INSERT OR REPLACE INTO submissions
+                (team_name, devpost, github)
+            VALUES
+                (?, ?, ?)
+            """ 
+
+            self.cursor.execute(sql, (
+                team_name,
+                devpost,
+                github
+            ))
+            self.conn.commit()
+
             await interaction.response.send_message(f"Please wait for the announcement before you run this command.")
             return
 
