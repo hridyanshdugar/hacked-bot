@@ -22,6 +22,7 @@ class Bot(commands.Bot):
         self.message_id = 1336237048696275007  # The ID of the message to watch for reactions
         self.role_to_add = None  # The role to assign when reacted to
         self.add_commands()
+        self.team_list = None
     
     async def on_ready(self):
         print(f'{self.user} has connected to {self.guilds[0].name}!')
@@ -383,6 +384,7 @@ class Bot(commands.Bot):
                     "----------------------------------------\n"
                 )
 
+            self.team_list = lines
             response = "\n".join(lines)
 
             # Send the response
