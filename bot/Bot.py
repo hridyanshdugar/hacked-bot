@@ -319,7 +319,7 @@ class Bot(commands.Bot):
             ))
             self.conn.commit()
 
-            await interaction.response.send_message(f"Please wait for the announcement before you run this command.")
+            # await interaction.response.send_message(f"Please wait for the announcement before you run this command.")
 
             await interaction.response.send_message(
                 ":white_check_mark: Your submission has been recorded!",
