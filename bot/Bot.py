@@ -283,7 +283,6 @@ class Bot(commands.Bot):
         @app_commands.describe(member5="A team member.")
         @app_commands.describe(devpost="The link to the devpost")
         @app_commands.describe(github="The link to the github")
-        @app_commands.has_role("mod")
         async def judging( 
             interaction: discord.Interaction,
             member1: discord.Member,
