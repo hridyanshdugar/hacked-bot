@@ -318,6 +318,6 @@ class Bot(commands.Bot):
             if interaction.channel.category.name.lower() == "general":
                 await interaction.response.send_message(f"❌ You cannot run this command here. Please run it in your team channel.")
                 return
-            await interaction.response.send_message(f"Please wait for the announcement before you can run this command.")
+            await interaction.response.send_message(f"Please wait for the announcement before you run this command.")
             return
 
