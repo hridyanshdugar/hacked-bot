@@ -383,9 +383,9 @@ class Bot(commands.Bot):
                     f"• Members: {member_lines}\n"
                     "----------------------------------------\n"
                 )
+                await ctx.send(lines[-1])
 
             self.team_list = lines
-            response = "\n".join(lines)
 
             # Send the response
-            await ctx.send(response)
+            # await ctx.send(response)
