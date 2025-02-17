@@ -304,27 +304,27 @@ class Bot(commands.Bot):
                 await interaction.response.send_message(f"❌ You cannot run this command here. Please run it in your team channel.")
                 return
             
-            team_name = interaction.channel.name
+            # team_name = interaction.channel.name
 
-            sql = """
-            INSERT OR REPLACE INTO submissions
-                (team_name, devpost, github)
-            VALUES
-                (?, ?, ?)
-            """ 
+            # sql = """
+            # INSERT OR REPLACE INTO submissions
+            #     (team_name, devpost, github)
+            # VALUES
+            #     (?, ?, ?)
+            # """ 
 
-            self.cursor.execute(sql, (
-                team_name,
-                devpost,
-                github
-            ))
-            self.conn.commit()
+            # self.cursor.execute(sql, (
+            #     team_name,
+            #     devpost,
+            #     github
+            # ))
+            # self.conn.commit()
 
-            # await interaction.response.send_message(f"Please wait for the announcement before you run this command.")
+            await interaction.response.send_message(f"Sorry this command is unavailable now.")
 
-            await interaction.response.send_message(
-                ":white_check_mark: Your submission has been recorded!"
-            )
+            # await interaction.response.send_message(
+            #     ":white_check_mark: Your submission has been recorded!"
+            # )
 
             return
 
