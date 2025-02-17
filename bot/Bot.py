@@ -383,7 +383,7 @@ class Bot(commands.Bot):
                     f"• Members: {member_lines}\n"
                     "----------------------------------------\n"
                 )
-                await ctx.send(lines[-1])
+                await ctx.send(lines[-1]).edit(embed=None)
 
             self.team_list = lines
 
