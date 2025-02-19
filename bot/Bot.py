@@ -320,7 +320,7 @@ class Bot(commands.Bot):
             # ))
             # self.conn.commit()
 
-            await interaction.response.send_message(f"Sorry this command is unavailable now.")
+            await interaction.response.send_message(f"Sorry this command is unavailable right now.")
 
             # await interaction.response.send_message(
             #     ":white_check_mark: Your submission has been recorded!"
